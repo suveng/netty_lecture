@@ -15,7 +15,7 @@ public class StringSocketServerHandler extends SimpleChannelInboundHandler<Strin
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         String uuid = UUID.randomUUID().toString();
-        System.out.printf("server#接收到消息#地址=%s#消息=%s#uuid=%s", ctx.channel().remoteAddress(), msg,uuid);
+        System.out.printf("server#接收到消息#地址=%s#消息=%s#uuid=%s\n", ctx.channel().remoteAddress(), msg,uuid);
         ctx.channel().writeAndFlush(uuid);
     }
 

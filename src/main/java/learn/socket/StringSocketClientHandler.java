@@ -3,6 +3,8 @@ package learn.socket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
+import java.time.LocalDateTime;
+
 /**
  * description:
  * @author suwenguang
@@ -11,7 +13,8 @@ import io.netty.channel.SimpleChannelInboundHandler;
 public class StringSocketClientHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.out.printf("client#接收到消息#地址=%s#消息=%s", ctx.channel().remoteAddress(), msg);
+        System.out.printf("client#接收到消息#地址=%s#消息=%s\n", ctx.channel().remoteAddress(), msg);
+        ctx.writeAndFlush(LocalDateTime.now().toString());
     }
 
     @Override
@@ -19,5 +22,10 @@ public class StringSocketClientHandler extends SimpleChannelInboundHandler<Strin
         //super.exceptionCaught(ctx, cause);
         cause.printStackTrace();
         ctx.close();
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush("hello,server!");
     }
 }
