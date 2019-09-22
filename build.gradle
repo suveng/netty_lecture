@@ -9,12 +9,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    maven { url "http://192.168.9.233:8081/repository/private-release/" }
     mavenCentral()
 }
 
 dependencies {
-    testCompile(
-            "junit:junit:4.12"
+    compile(
+            "io.netty:netty-all:4.1.10.Final"
     )
 }
