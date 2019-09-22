@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.learn'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven { url "http://192.168.9.233:8081/repository/private-release/" }
+    mavenCentral()
+}
+
+dependencies {
+    testCompile(
+            "junit:junit:4.12"
+    )
+}
